@@ -18,3 +18,14 @@ func (api PosteAPI) ListDomains() (*ListDomainsResponse, error) {
 	}
 	return nil, fmt.Errorf("Err")
 }
+
+func (api PosteAPI) CreateDomain(name string) error {
+	rawResp, err := api.RawCreateDomain(name)
+	if err != nil {
+		return err
+	}
+	if rawResp.StatusCode() == 201 {
+		return nil
+	}
+	return fmt.Errorf("Err")
+}

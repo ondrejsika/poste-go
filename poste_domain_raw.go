@@ -7,3 +7,7 @@ import (
 func (api PosteAPI) RawListDomains() (*resty.Response, error) {
 	return api.get("/v1/domains", map[string]string{})
 }
+
+func (api PosteAPI) RawCreateDomain(name string) (*resty.Response, error) {
+	return api.post("/v1/domains", map[string]interface{}{"name": name})
+}
