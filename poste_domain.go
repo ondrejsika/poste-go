@@ -29,3 +29,14 @@ func (api PosteAPI) CreateDomain(name string) error {
 	}
 	return fmt.Errorf("Err")
 }
+
+func (api PosteAPI) DeleteDomain(name string) error {
+	rawResp, err := api.RawDeleteDomain(name)
+	if err != nil {
+		return err
+	}
+	if rawResp.StatusCode() == 204 {
+		return nil
+	}
+	return fmt.Errorf("Err")
+}

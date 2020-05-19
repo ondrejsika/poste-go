@@ -11,3 +11,7 @@ func (api PosteAPI) RawListDomains() (*resty.Response, error) {
 func (api PosteAPI) RawCreateDomain(name string) (*resty.Response, error) {
 	return api.post("/v1/domains", map[string]interface{}{"name": name})
 }
+
+func (api PosteAPI) RawDeleteDomain(name string) (*resty.Response, error) {
+	return api.delete("/v1/domains/" + name)
+}
