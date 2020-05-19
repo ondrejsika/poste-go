@@ -4,3 +4,21 @@
 
     2020 Ondrej Sika <ondrej@ondrejsika.com>
     https://github.com/ondrejsika/poste-go
+
+## Example Usage
+
+```go
+package main
+
+import (
+	"fmt"
+
+	"github.com/ondrejsika/poste-go"
+)
+
+func main() {
+	api := poste.New("http://localhost/admin/api", "admin@example.com", "asdfasdf")
+	api.CreateDomain("foo.io")
+	api.CreateBox("foo@foo.io", "asdfasdf")
+}
+```
