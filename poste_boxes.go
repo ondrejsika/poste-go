@@ -30,6 +30,17 @@ func (api PosteAPI) GetBoxSieve(email string) (*BoxSieveResponse, error) {
 	return nil, fmt.Errorf("Err")
 }
 
+func (api PosteAPI) UpdateBoxPassword(email string, passwordPlaintext string) error {
+	rawResp, err := api.RawUpdateBoxPassword(email, passwordPlaintext)
+	if err != nil {
+		return err
+	}
+	if rawResp.StatusCode() == 204 {
+		return nil
+	}
+	return fmt.Errorf("Err")
+}
+
 func (api PosteAPI) DeleteBox(email string) error {
 	rawResp, err := api.RawDeleteBox(email)
 	if err != nil {
