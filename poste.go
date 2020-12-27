@@ -25,6 +25,11 @@ func (api PosteAPI) post(url string, body map[string]interface{}) (*resty.Respon
 	return client.R().SetBasicAuth(api.username, api.password).SetBody(body).Post(api.origin + url)
 }
 
+func (api PosteAPI) patch(url string, body map[string]interface{}) (*resty.Response, error) {
+	client := resty.New()
+	return client.R().SetBasicAuth(api.username, api.password).SetBody(body).Patch(api.origin + url)
+}
+
 func (api PosteAPI) delete(url string) (*resty.Response, error) {
 	client := resty.New()
 	return client.R().SetBasicAuth(api.username, api.password).Delete(api.origin + url)
