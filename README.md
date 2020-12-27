@@ -20,5 +20,7 @@ func main() {
 	api := poste.New("http://localhost/admin/api", "admin@example.com", "asdfasdf")
 	api.CreateDomain("foo.io")
 	api.CreateBox("foo@foo.io", "asdfasdf")
+  sieve, _ := api.GetBoxSieve("foo@foo.io")
+  fmt.Println(sieve)
 }
 ```
