@@ -41,6 +41,17 @@ func (api PosteAPI) UpdateBoxPassword(email string, passwordPlaintext string) er
 	return fmt.Errorf("Err")
 }
 
+func (api PosteAPI) UpdateBoxSieve(email string, script string) error {
+	rawResp, err := api.RawUpdateBoxSieve(email, script)
+	if err != nil {
+		return err
+	}
+	if rawResp.StatusCode() == 204 {
+		return nil
+	}
+	return fmt.Errorf("Err")
+}
+
 func (api PosteAPI) DeleteBox(email string) error {
 	rawResp, err := api.RawDeleteBox(email)
 	if err != nil {
